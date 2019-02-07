@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         const queryText = `
         SELECT * FROM "person";
         `;
-        pool.query(queryText, [req.user.clearance_level])
+        pool.query(queryText)
             .then(results => res.send(results.rows))
             .catch(error => {
                 console.log('Error making SELECT FROM "person":', error);
