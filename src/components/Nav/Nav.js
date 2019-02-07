@@ -25,6 +25,14 @@ const Nav = (props) => (
           <LogOutButton className="nav-link"/>
         </>
       )}
+      {/* Show the link to the user page if the user is logged in */}
+      {props.user.id && (
+        <>
+          <Link className="nav-link" to="/allusers">
+            Users
+          </Link>
+        </>
+      )}
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/about">
         About

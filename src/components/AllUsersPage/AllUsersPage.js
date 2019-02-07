@@ -11,15 +11,15 @@ class AllUsersPage extends Component {
     }
 
     componentDidMount() {
-        const config = {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
-        };
+        // const config = {
+        //     headers: { 'Content-Type': 'application/json' },
+        //     withCredentials: true,
+        // };
 
         axios({
             method: 'GET',
             url: '/api/allusers',
-            config: config
+            // config: config
         }).then((response) => {
             this.setState({
                 userArray: response.data,
