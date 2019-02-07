@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     console.log('req.user:', req.user);
     if (req.isAuthenticated()) {
         const queryText = `
-        SELECT * FROM "person";
+        SELECT id, username, clearance_level AS clearance FROM "person";
         `;
         pool.query(queryText)
             .then(results => res.send(results.rows))

@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './AllUsersPage.css';
+
 class AllUsersPage extends Component {
     constructor(props) {
         super(props);
@@ -11,15 +13,9 @@ class AllUsersPage extends Component {
     }
 
     componentDidMount() {
-        // const config = {
-        //     headers: { 'Content-Type': 'application/json' },
-        //     withCredentials: true,
-        // };
-
         axios({
             method: 'GET',
-            url: '/api/allusers',
-            // config: config
+            url: '/api/allusers'
         }).then((response) => {
             this.setState({
                 userArray: response.data,
@@ -33,15 +29,26 @@ class AllUsersPage extends Component {
         return (
             <div>
                 <h2>All Registered Users</h2>
-                <p>Currently logged in as <b>{this.props.user.username}</b></p>
-                <p>Clearance level: <b>{this.props.user.clearance_level}</b></p>
-                {JSON.stringify(this.state.userArray)}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>clearance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.userArray.map(user => (
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.username}</td>
+                                <td>{user.clearance}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                 {/* <ul>
-                    {this.props.secrets.map(secret => (
-                        <li>
-                            Clearance: {secret.secrecy_level} | Content: {secret.content}
-                        </li>
-                    ))}
+
                 </ul> */}
             </div>
         );
