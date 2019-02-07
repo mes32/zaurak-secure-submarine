@@ -47,9 +47,6 @@ class AllUsersPage extends Component {
                         ))}
                     </tbody>
                 </table>
-                {/* <ul>
-
-                </ul> */}
             </div>
         );
     }
